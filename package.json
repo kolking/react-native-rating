@@ -1,0 +1,77 @@
+{
+  "name": "react-native-awesome-rating",
+  "version": "1.0.0",
+  "description": "Interactive rating component for React Native that allows to show stars, hearts, emoji, or your custom symbols with nice and performant animations.",
+  "author": "Nick Seryakov (https://github.com/kolking)",
+  "license": "MIT",
+  "homepage": "https://github.com/kolking/react-native-awesome-rating#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://kolking@github.com/kolking/react-native-awesome-rating.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kolking/react-native-awesome-rating/issues"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android",
+    "rating",
+    "rate",
+    "evaluate",
+    "feedback",
+    "user rating",
+    "rating stars",
+    "rating hearts",
+    "rating emoji"
+  ],
+  "main": "src/index",
+  "react-native": "src/index",
+  "source": "src/index",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
+    "validate": "yarn tsc && yarn lint --fix && yarn test -u",
+    "install-all": "yarn && cd example && yarn && npx pod-install"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/react-native": "^0.67.3",
+    "@types/react-test-renderer": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.32.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.67.0",
+    "react": "17.0.2",
+    "react-native": "0.68.2",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.4.4"
+  },
+  "resolutions": {
+    "@types/react": "^17"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}
