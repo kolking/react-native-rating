@@ -1,15 +1,15 @@
-# React Native Awesome Rating
+# React Native Rating
 
-An interactive rating component for React Native, which can display ratings using stars, hearts, emojis, or custom symbols of your choice. React Native Awesome Rating leverages the `PanResponder` and `Animated` APIs to create high-performing animations. It is written in TypeScript and has zero dependencies. Whether you’re building a review-based app, a rating system, or any application that requires user feedback, this component will be an invaluable addition to your toolkit.
+An interactive rating component for React Native, which can display ratings using stars, hearts, emojis, or custom symbols of your choice. The component leverages the `PanResponder` and `Animated` APIs to create high-performing animations. It is written in TypeScript and has zero dependencies. Whether you’re building a review-based app, a rating system, or any application that requires user feedback, React Native Rating will be an invaluable addition to your toolkit.
 
-<img width="400" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/0a17986a-5846-41d3-99d9-9e687198a078">
+<img width="400" src="https://github.com/kolking/react-native-rating/assets/4656448/0a17986a-5846-41d3-99d9-9e687198a078">
 
 ## Installation
 
 ```sh
-yarn add react-native-awesome-rating
+yarn add @kolking/react-native-rating
 # or
-npm install react-native-awesome-rating
+npm install @kolking/react-native-rating
 ```
 
 ## Example Usage
@@ -17,7 +17,7 @@ npm install react-native-awesome-rating
 ```jsx
 import React, { useCallback, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Rating } from 'react-native-awesome-rating';
+import { Rating } from '@kolking/react-native-rating';
 
 const App = () => {
   const [rating, setRating] = useState(0);
@@ -82,31 +82,31 @@ There are multiple pre-defined themes available for selection. All of these them
 
 Preview | `baseSymbol` | `fillSymbol` | `baseColor` | `fillColor` | `touchColor`
 ---|:-:|:-:|---|---|---
-<img width="200" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/18e5e63d-e94b-44c2-abdd-95413ab1818d"> | <img width="40" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/c7e5c984-c0d3-4e98-b4e4-66b8d892fd71"> | <img width="40" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/c7e5c984-c0d3-4e98-b4e4-66b8d892fd71"> | `#D1D1D6` light<br>`#3A3A3C` dark | `#FF9500` light<br>`#FF9F0A` dark | `#FF3B30` light<br>`#FF453A` dark
+<img width="200" src="https://github.com/kolking/react-native-rating/assets/4656448/18e5e63d-e94b-44c2-abdd-95413ab1818d"> | <img width="40" src="https://github.com/kolking/react-native-rating/assets/4656448/c7e5c984-c0d3-4e98-b4e4-66b8d892fd71"> | <img width="40" src="https://github.com/kolking/react-native-rating/assets/4656448/c7e5c984-c0d3-4e98-b4e4-66b8d892fd71"> | `#D1D1D6` light<br>`#3A3A3C` dark | `#FF9500` light<br>`#FF9F0A` dark | `#FF3B30` light<br>`#FF453A` dark
 
 ### `stars-outline`
 
 Preview | `baseSymbol` | `fillSymbol` | `baseColor` | `fillColor` | `touchColor`
 ---|:-:|:-:|---|---|---
-<img width="200" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/4317f95d-35ad-4d5b-8dee-847ef88e90cf"> | <img width="40" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/0e21afd4-b3df-4dc0-9fc4-17fcacb9065a"> | <img width="40" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/c7e5c984-c0d3-4e98-b4e4-66b8d892fd71"> | `#C7C7CC` light<br>`#48484A` dark | `#FF9500` light<br>`#FF9F0A` dark | `#FF3B30` light<br>`#FF453A` dark
+<img width="200" src="https://github.com/kolking/react-native-rating/assets/4656448/4317f95d-35ad-4d5b-8dee-847ef88e90cf"> | <img width="40" src="https://github.com/kolking/react-native-rating/assets/4656448/0e21afd4-b3df-4dc0-9fc4-17fcacb9065a"> | <img width="40" src="https://github.com/kolking/react-native-rating/assets/4656448/c7e5c984-c0d3-4e98-b4e4-66b8d892fd71"> | `#C7C7CC` light<br>`#48484A` dark | `#FF9500` light<br>`#FF9F0A` dark | `#FF3B30` light<br>`#FF453A` dark
 
 ### `hearts`
 
 Preview | `baseSymbol` | `fillSymbol` | `baseColor` | `fillColor` | `touchColor`
 ---|:-:|:-:|---|---|---
-<img width="200" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/fd59fe75-d5b9-47e2-b702-50de6d1cd350"> | <img width="40" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/19410750-cf5a-44d6-bf8b-0b158a03318e"> | <img width="40" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/19410750-cf5a-44d6-bf8b-0b158a03318e"> | `#D1D1D6` light<br>`#3A3A3C` dark | `#FF2D55` light<br>`#FF375F` dark | `#D70015` light<br>`#D70015` dark
+<img width="200" src="https://github.com/kolking/react-native-rating/assets/4656448/fd59fe75-d5b9-47e2-b702-50de6d1cd350"> | <img width="40" src="https://github.com/kolking/react-native-rating/assets/4656448/19410750-cf5a-44d6-bf8b-0b158a03318e"> | <img width="40" src="https://github.com/kolking/react-native-rating/assets/4656448/19410750-cf5a-44d6-bf8b-0b158a03318e"> | `#D1D1D6` light<br>`#3A3A3C` dark | `#FF2D55` light<br>`#FF375F` dark | `#D70015` light<br>`#D70015` dark
 
 ### `hearts-outline`
 
 Preview | `baseSymbol` | `fillSymbol` | `baseColor` | `fillColor` | `touchColor`
 ---|:-:|:-:|---|---|---
-<img width="200" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/b30b5003-82d1-4d55-b327-5af60bbf0a59"> | <img width="40" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/7d8464ec-c2ce-4e66-84a3-bc48e5fa9f7e"> | <img width="40" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/19410750-cf5a-44d6-bf8b-0b158a03318e"> | `#C7C7CC` light<br>`#48484A` dark | `#FF2D55` light<br>`#FF375F` dark | `#D70015` light<br>`#D70015` dark
+<img width="200" src="https://github.com/kolking/react-native-rating/assets/4656448/b30b5003-82d1-4d55-b327-5af60bbf0a59"> | <img width="40" src="https://github.com/kolking/react-native-rating/assets/4656448/7d8464ec-c2ce-4e66-84a3-bc48e5fa9f7e"> | <img width="40" src="https://github.com/kolking/react-native-rating/assets/4656448/19410750-cf5a-44d6-bf8b-0b158a03318e"> | `#C7C7CC` light<br>`#48484A` dark | `#FF2D55` light<br>`#FF375F` dark | `#D70015` light<br>`#D70015` dark
 
 ### `emoji`
 
 Preview | `baseSymbol`
 ---|---
-<img width="200" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/b2bab6a2-3893-40e8-9ae2-9c9dc4057fa7"> | <img width="300" src="https://github.com/kolking/react-native-awesome-rating/assets/4656448/cfb7149e-261c-4f52-9dbc-2682c378aab0">
+<img width="200" src="https://github.com/kolking/react-native-rating/assets/4656448/b2bab6a2-3893-40e8-9ae2-9c9dc4057fa7"> | <img width="300" src="https://github.com/kolking/react-native-rating/assets/4656448/cfb7149e-261c-4f52-9dbc-2682c378aab0">
 
 ## License
 

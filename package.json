@@ -1,16 +1,16 @@
 {
-  "name": "react-native-awesome-rating",
+  "name": "@kolking/react-native-rating",
   "version": "1.0.0",
-  "description": "An interactive rating component for React Native that can display ratings using stars, hearts, emojis, or custom symbols, all with high-performing animations.",
+  "description": "An interactive rating component for React Native that can display ratings using stars, hearts, emojis, or custom symbols.",
   "author": "Nick Seryakov (https://github.com/kolking)",
   "license": "MIT",
-  "homepage": "https://github.com/kolking/react-native-awesome-rating#readme",
+  "homepage": "https://github.com/kolking/react-native-rating#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://kolking@github.com/kolking/react-native-awesome-rating.git"
+    "url": "git+https://kolking@github.com/kolking/react-native-rating.git"
   },
   "bugs": {
-    "url": "https://github.com/kolking/react-native-awesome-rating/issues"
+    "url": "https://github.com/kolking/react-native-rating/issues"
   },
   "keywords": [
     "react-native",
@@ -21,15 +21,15 @@
     "evaluate",
     "feedback",
     "user rating",
-    "rating stars",
-    "rating hearts",
-    "rating emoji"
+    "stars rating",
+    "hearts rating",
+    "emoji rating"
   ],
   "main": "src/index",
   "react-native": "src/index",
   "source": "src/index",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
     "validate": "yarn tsc && yarn lint --fix && yarn test -u",
     "install-all": "yarn && cd example && yarn && npx pod-install"
@@ -72,6 +72,7 @@
     ]
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }

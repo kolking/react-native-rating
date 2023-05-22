@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { ScrollView, StyleSheet, Text } from 'react-native';
-import { Rating } from 'react-native-awesome-rating';
+import { Rating } from '@kolking/react-native-rating';
 
 const App = () => {
   const [rating, setRating] = useState(3.5);
