@@ -11,12 +11,12 @@ import {
 
 import RatingSymbol from './RatingSymbol';
 import { clamp, getSpacing, getSymbols } from './helpers';
-import { Theme, ThemeType, getThemeProp } from './themes';
+import { Variants, getVariantProp } from './variants';
 
 type SymbolSource = ImageSourcePropType | ImageSourcePropType[];
 
 export interface RatingProps {
-  theme?: ThemeType;
+  variant?: `${Variants}`;
   size?: number;
   scale?: number;
   rating?: number;
@@ -35,18 +35,18 @@ export interface RatingProps {
 
 export const Rating = React.memo(
   ({
-    theme = Theme.STARS,
+    variant = Variants.STARS,
     size = 30,
     scale = 1.3,
     rating = 0,
     spacing = getSpacing(size, scale),
     disabled = false,
     maxRating = 5,
-    baseColor = getThemeProp(theme, 'baseColor'),
-    baseSymbol = getThemeProp(theme, 'baseSymbol'),
-    fillColor = getThemeProp(theme, 'fillColor'),
-    fillSymbol = getThemeProp(theme, 'fillSymbol'),
-    touchColor = getThemeProp(theme, 'touchColor'),
+    baseColor = getVariantProp(variant, 'baseColor'),
+    baseSymbol = getVariantProp(variant, 'baseSymbol'),
+    fillColor = getVariantProp(variant, 'fillColor'),
+    fillSymbol = getVariantProp(variant, 'fillSymbol'),
+    touchColor = getVariantProp(variant, 'touchColor'),
     style,
     onMove,
     onChange,

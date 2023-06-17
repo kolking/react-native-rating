@@ -6,10 +6,13 @@ An interactive rating component for React Native, which can display ratings usin
 
 ## Installation
 
+### yarn
 ```sh
 yarn add @kolking/react-native-rating
-# or
-npm install @kolking/react-native-rating
+```
+### npm
+```sh
+npm i @kolking/react-native-rating
 ```
 
 ## Example Usage
@@ -54,18 +57,18 @@ export default App;
 
 Prop | Type | Default | Description
 ---|---|---|---
-`theme` | [ThemeType](#themes) | `stars` | See [themes section](#themes) below
+`variant` | [Variants](#variants) | `stars` | Pre-defined design variant, see [variants section](#variants) below
 `rating` | number | `0` | Decimal rating value
 `size` | number | `30` | Width and height of the rating symbol
 `scale` | number | `1.3` | Scaling factor for the snap animation, set it to `1` to turn animation off
 `spacing` | number | `size * (scale - 1)` | Distance between symbols, calculated based on the `scale` prop if no value is provided
 `maxRating` | number | `5` | Maximum rating value and the total number of symbols
 `disabled` | boolean | `false` | Set `true` to disable user interaction
-`baseColor` | string | theme default | Color of the "empty" symbols
-`fillColor` | string | theme default | Color of the "filled" symbols
-`touchColor` | string | theme default | Color of the symbols during interaction
-`baseSymbol` | [SymbolSource](#symbols) | theme default | An image (or array of images) for the "empty" rating
-`fillSymbol` | [SymbolSource](#symbols) | theme default | An image (or array of images) for the "filled" rating
+`baseColor` | string | variant default | Color of the "empty" symbols
+`fillColor` | string | variant default | Color of the "filled" symbols
+`touchColor` | string | variant default | Color of the symbols during interaction
+`baseSymbol` | [SymbolSource](#symbols) | variant default | An image (or array of images) for the "empty" rating
+`fillSymbol` | [SymbolSource](#symbols) | variant default | An image (or array of images) for the "filled" rating
 `style` | ViewStyle | | Style object applied to the wrapping View
 `onMove` | `(rating: number) => void` | | A function called during pan gesture
 `onChange` | `(rating: number) => void` | | A function called when touch released
@@ -74,9 +77,9 @@ Prop | Type | Default | Description
 
 To achieve a customized appearance for the component, you have the flexibility to define your own symbols using the `baseSymbol` and `fillSymbol` props. The `SymbolSource` type is defined as `ImageSourcePropType | ImageSourcePropType[]`, allowing you to pass either a single image source or an array of images. It is important to note that when passing an array, its length must match the `maxRating` value to ensure proper functionality.
 
-## Themes
+## Variants
 
-There are multiple pre-defined themes available for selection. All of these themes are designed to support dark color scheme. Moreover, you have the flexibility to override any of the theme props with your own custom values.
+There are five pre-defined design variants available for selection. All of the variants are designed to support both light and dark color schemes. In addition, you have the flexibility to override any of the variant props with your own custom values.
 
 ### `stars`
 

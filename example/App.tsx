@@ -25,7 +25,7 @@ const App = () => {
       />
       <Rating
         size={40}
-        theme="stars-outline"
+        variant="stars-outline"
         rating={rating}
         style={styles.rating}
         onMove={setLiveRating}
@@ -33,7 +33,7 @@ const App = () => {
       />
       <Rating
         size={40}
-        theme="hearts"
+        variant="hearts"
         rating={rating}
         style={styles.rating}
         onMove={setLiveRating}
@@ -41,7 +41,7 @@ const App = () => {
       />
       <Rating
         size={40}
-        theme="hearts-outline"
+        variant="hearts-outline"
         rating={rating}
         style={styles.rating}
         onMove={setLiveRating}
@@ -49,7 +49,7 @@ const App = () => {
       />
       <Rating
         size={40}
-        theme="emoji"
+        variant="emoji"
         rating={rating}
         style={styles.rating}
         onMove={setLiveRating}
