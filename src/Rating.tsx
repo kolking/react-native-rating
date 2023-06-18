@@ -114,8 +114,6 @@ export const Rating = React.memo(
       }),
     ).current;
 
-    console.log('RENDER Rating');
-
     return (
       <View
         {...(!disabled && panResponder.panHandlers)}

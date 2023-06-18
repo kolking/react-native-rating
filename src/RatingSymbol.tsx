@@ -51,8 +51,6 @@ const RatingSymbol = ({
     extrapolate: 'clamp',
   });
 
-  console.log('RENDER Symbol', index);
-
   return (
     <Animated.View style={{ transform: [{ scale: animatedScale }] }}>
       <Image source={baseSource} style={{ width: size, height: size, tintColor: baseColor }} />
