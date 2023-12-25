@@ -111,6 +111,10 @@ Preview | `baseSymbol`
 ---|---
 <img width="200" src="https://github.com/kolking/react-native-rating/assets/4656448/b2bab6a2-3893-40e8-9ae2-9c9dc4057fa7"> | <img width="300" src="https://github.com/kolking/react-native-rating/assets/4656448/cfb7149e-261c-4f52-9dbc-2682c378aab0">
 
+## Feedback
+
+I appreciate your feedback, so please star the repository if you like it. This is the best motivation for me to maintain the package and add new features. If you have any feature requests, found a bug, or have ideas for improvement, feel free to [open an issue](https://github.com/kolking/react-native-rating/issues).
+
 ## License
 
-MIT
+Licensed under the MIT license.
