@@ -126,6 +126,7 @@ export const Rating = React.memo(
             size={size}
             scale={scale}
             index={index + 1}
+            disabled={disabled}
             baseColor={baseColor}
             fillColor={interactive ? touchColor : fillColor}
             baseSource={baseSource}

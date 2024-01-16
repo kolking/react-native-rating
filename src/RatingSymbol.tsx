@@ -5,6 +5,7 @@ interface Props {
   size: number;
   index: number;
   scale: number;
+  disabled: boolean;
   baseColor: string;
   fillColor?: string;
   baseSource: ImageSourcePropType;
@@ -17,6 +18,7 @@ const RatingSymbol = ({
   size,
   index,
   scale,
+  disabled,
   baseColor,
   fillColor = baseColor,
   baseSource,
@@ -27,17 +29,19 @@ const RatingSymbol = ({
   const animatedScale = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    Animated.spring(animatedScale, {
-      tension: 50,
-      friction: 3,
-      toValue: animatedSymbol.interpolate({
-        inputRange: [index - 1, index, index + 1],
-        outputRange: [1, scale, 1],
-        extrapolate: 'clamp',
-      }) as Animated.Value,
-      useNativeDriver: true,
-    }).start();
-  }, [animatedScale, animatedSymbol, index, scale]);
+    if (!disabled) {
+      Animated.spring(animatedScale, {
+        tension: 50,
+        friction: 3,
+        toValue: animatedSymbol.interpolate({
+          inputRange: [index - 1, index, index + 1],
+          outputRange: [1, scale, 1],
+          extrapolate: 'clamp',
+        }) as Animated.Value,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [disabled, animatedScale, animatedSymbol, index, scale]);
 
   const translateOverlay = animatedOverlay.interpolate({
     inputRange: [index - 1, index],
