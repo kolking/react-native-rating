@@ -7,10 +7,13 @@ An interactive rating component for React Native, which can display ratings usin
 ## Installation
 
 ### yarn
+
 ```sh
 yarn add @kolking/react-native-rating
 ```
+
 ### npm
+
 ```sh
 npm i @kolking/react-native-rating
 ```
@@ -72,6 +75,10 @@ Prop | Type | Default | Description
 `style` | ViewStyle | | Style object applied to the wrapping View
 `onMove` | `(rating: number) => void` | | A function called during pan gesture
 `onChange` | `(rating: number) => void` | | A function called when touch released
+
+## Performance
+
+When rendering a lot of rating components on the same screen, e.g. in a `FlatList` or `SectionList`, make sure to set the `disabled` prop to `true`. Otherwise you may encounter the "excessive number of pending callbacks" warning.
 
 ## Symbols
 
