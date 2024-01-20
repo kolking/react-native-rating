@@ -10,8 +10,13 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
+    "@shopify/react-native-performance": "^4.1.2",
     "react": "17.0.2",
-    "react-native": "0.68.2"
+    "react-native": "0.68.2",
+    "react-native-safe-area-context": "^4.8.2",
+    "react-native-screens": "^3.29.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
