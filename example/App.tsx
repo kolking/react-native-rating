@@ -1,78 +1,77 @@
-import React, { useCallback, useState } from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
-import { Rating } from '@kolking/react-native-rating';
+import React, { useCallback } from 'react';
+import { Alert } from 'react-native';
+import { NavigationContainer, useNavigationContainerRef } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { RenderPassReport, PerformanceProfiler } from '@shopify/react-native-performance';
+
+import { ScreenHome } from './screens/ScreenHome';
+import { ScreenMeasured } from './screens/ScreenMeasured';
+import { ScreenReference } from './screens/ScreenReference';
+
+export type StackParamList = {
+  Home: {
+    measuredTTR: number;
+    referenceTTR: number;
+  };
+  Measured: undefined;
+  Reference: undefined;
+};
+
+const Stack = createNativeStackNavigator<StackParamList>();
+
+let measuredTTR = 0;
+let referenceTTR = 0;
+
+function setTTR(oldValue: number, newValue: number) {
+  return Math.round(oldValue > 0 ? (oldValue + newValue) / 2 : newValue);
+}
 
 const App = () => {
-  const [rating, setRating] = useState(3.5);
-  const [liveRating, setLiveRating] = useState(0);
+  const navigationRef = useNavigationContainerRef<StackParamList>();
 
-  const handleChange = useCallback(
-    (value: number) => {
-      setRating(Math.round((rating + value) * 5) / 10);
-      setLiveRating(0);
+  const handlePerformanceReport = useCallback(
+    (report: RenderPassReport) => {
+      if (report.timeToRenderMillis) {
+        switch (report.destinationScreen) {
+          case 'Measured':
+            measuredTTR = setTTR(measuredTTR, report.timeToRenderMillis);
+            break;
+          case 'Reference':
+            referenceTTR = setTTR(referenceTTR, report.timeToRenderMillis);
+            break;
+        }
+      }
+
+      if (report.destinationScreen !== 'Home') {
+        Alert.alert(`Time to render: ${Math.round(report.timeToRenderMillis || 0)} ms`, undefined, [
+          {
+            text: 'OK',
+            onPress: () => navigationRef.navigate('Home', { measuredTTR, referenceTTR }),
+          },
+        ]);
+      }
+
+      console.log(JSON.stringify(report, null, 2));
     },
-    [rating],
+    [navigationRef],
   );
 
   return (
-    <ScrollView contentContainerStyle={styles.root}>
-      <Rating
-        size={40}
-        rating={rating}
-        style={styles.rating}
-        onMove={setLiveRating}
-        onChange={handleChange}
-      />
-      <Rating
-        size={40}
-        variant="stars-outline"
-        rating={rating}
-        style={styles.rating}
-        onMove={setLiveRating}
-        onChange={handleChange}
-      />
-      <Rating
-        size={40}
-        variant="hearts"
-        rating={rating}
-        style={styles.rating}
-        onMove={setLiveRating}
-        onChange={handleChange}
-      />
-      <Rating
-        size={40}
-        variant="hearts-outline"
-        rating={rating}
-        style={styles.rating}
-        onMove={setLiveRating}
-        onChange={handleChange}
-      />
-      <Rating
-        size={40}
-        variant="emoji"
-        rating={rating}
-        style={styles.rating}
-        onMove={setLiveRating}
-        onChange={handleChange}
-      />
-      <Text style={styles.text}>Rated {liveRating || rating} out of 5</Text>
-    </ScrollView>
+    <PerformanceProfiler onReportPrepared={handlePerformanceReport}>
+      <NavigationContainer ref={navigationRef}>
+        <Stack.Navigator screenOptions={{ animation: 'fade_from_bottom' }}>
+          <Stack.Screen
+            name="Home"
+            component={ScreenHome}
+            options={{ headerShown: false }}
+            initialParams={{ measuredTTR, referenceTTR }}
+          />
+          <Stack.Screen name="Measured" component={ScreenMeasured} />
+          <Stack.Screen name="Reference" component={ScreenReference} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PerformanceProfiler>
   );
 };
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 17,
-    marginTop: 20,
-  },
-  rating: {
-    marginVertical: 10,
-  },
-});
 
 export default App;
