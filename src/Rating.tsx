@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
   ImageSourcePropType,
-  LayoutChangeEvent,
   PanResponder,
   StyleProp,
   StyleSheet,
@@ -62,7 +61,7 @@ export const Rating = React.memo(
     const animatedSymbol = useRef(new Animated.Value(0)).current;
     const animatedOverlay = useRef(new Animated.Value(value)).current;
     const props = useRef({ value: 0, onMove, onChange });
-    const layout = useRef({ x: 0, y: 0 });
+    const offset = useRef(0);
 
     // Update props used in PanResponder to avoid stale values
     props.current = { ...props.current, onMove, onChange };
@@ -74,10 +73,6 @@ export const Rating = React.memo(
         animatedOverlay.setValue(value);
       }
     }, [interactive, animatedSymbol, animatedOverlay, value]);
-
-    const handleLayout = useCallback(({ nativeEvent }: LayoutChangeEvent) => {
-      layout.current = nativeEvent.layout;
-    }, []);
 
     const setAnimatedValues = (locationX: number) => {
       const newValue = clamp(Math.ceil(locationX / width), 0, maxRating);
@@ -96,16 +91,21 @@ export const Rating = React.memo(
       PanResponder.create({
         onStartShouldSetPanResponder: () => true,
         onPanResponderTerminationRequest: () => false,
-        onPanResponderGrant: ({ nativeEvent: { locationX } }) => {
-          // At this point the locationX is reliable even on Android
+        onPanResponderGrant: ({ nativeEvent: { pageX, locationX } }) => {
+          // At this point the locationX is accurate, so we can store
+          // the offset between pageX and locationX in order to derive
+          // the correct locationX later in onPanResponderMove callback.
+          offset.current = pageX - locationX;
+
           setInteractive(true);
           setAnimatedValues(locationX);
         },
         onPanResponderMove: ({ nativeEvent: { pageX } }) => {
           // On Android the nativeEvent.locationX is not reliable
           // when the touch moves over the wrapper element bounds.
-          // Therefore the correct value has to be calculated:
-          const locationX = pageX - layout.current.x;
+          // But the pageX is accurate, therefore the correct value
+          // can be calculated using previously stored offset:
+          const locationX = pageX - offset.current;
 
           if (locationX > 0 && props.current.value > 0) {
             setAnimatedValues(locationX);
@@ -131,7 +131,6 @@ export const Rating = React.memo(
         {...(!disabled && panResponder.panHandlers)}
         style={[style, styles.root, { width: maxWidth }]}
         pointerEvents="box-only"
-        onLayout={handleLayout}
       >
         {symbols.map(({ baseSource, fillSource }, index) => (
           <RatingSymbol
