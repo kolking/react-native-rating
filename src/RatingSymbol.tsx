@@ -12,6 +12,7 @@ interface Props {
   fillSource?: ImageSourcePropType;
   animatedSymbol: Animated.Value;
   animatedOverlay: Animated.Value;
+  testID?: string;
 }
 
 const RatingSymbol = ({
@@ -25,6 +26,7 @@ const RatingSymbol = ({
   fillSource = baseSource,
   animatedSymbol,
   animatedOverlay,
+  testID,
 }: Props) => {
   const animatedScale = useRef(new Animated.Value(1)).current;
 
@@ -56,7 +58,7 @@ const RatingSymbol = ({
   });
 
   return (
-    <Animated.View style={{ transform: [{ scale: animatedScale }] }}>
+    <Animated.View testID={testID} style={{ transform: [{ scale: animatedScale }] }}>
       <Image source={baseSource} style={{ width: size, height: size, tintColor: baseColor }} />
       <Animated.View style={[styles.overlay, { transform: [{ translateX: translateOverlay }] }]}>
         <Animated.View style={{ transform: [{ translateX: translateSymbol }] }}>

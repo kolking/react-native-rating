@@ -31,6 +31,7 @@ export interface RatingProps {
   style?: StyleProp<ViewStyle>;
   onMove?: (rating: number) => void;
   onChange?: (rating: number) => void;
+  testID?: string;
 }
 
 export const Rating = React.memo(
@@ -50,6 +51,7 @@ export const Rating = React.memo(
     style,
     onMove,
     onChange,
+    testID,
   }: RatingProps) => {
     const width = size + spacing;
     const value = clamp(rating, 0, maxRating);
@@ -145,6 +147,7 @@ export const Rating = React.memo(
             fillSource={fillSource}
             animatedSymbol={animatedSymbol}
             animatedOverlay={animatedOverlay}
+            testID={testID ? `${testID}-${index}` : `rating-symbol-${index}`}
           />
         ))}
       </View>
