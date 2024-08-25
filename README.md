@@ -122,6 +122,13 @@ Preview | `baseSymbol`
 
 I appreciate your feedback, so please star the repository if you like it. This is the best motivation for me to maintain the package and add new features. If you have any feature requests, found a bug, or have ideas for improvement, feel free to [open an issue](https://github.com/kolking/react-native-rating/issues).
 
+Also, please check out my other React Native components that might be a good fit for your project:
+
+- [React Native Avatar](https://github.com/kolking/react-native-avatar) - Display user avatars like a pro.
+- [React Native Page Indicator](https://github.com/kolking/react-native-page-indicator) - Show the current page of a swiper, slideshow, carousel, etc.
+- [React Native Parallax Swiper](https://github.com/kolking/react-native-parallax-swiper) - Build a horizontal scroll swiper with a parallax effect.
+- [React Native Crossfade Image](https://github.com/kolking/react-native-crossfade-image) - Update image source with crossfade transition effect.
+
 ## License
 
 Licensed under the MIT license.
