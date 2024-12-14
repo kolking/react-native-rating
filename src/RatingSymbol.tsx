@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Animated, Image, ImageSourcePropType, StyleSheet } from 'react-native';
+import { Animated, I18nManager, Image, ImageSourcePropType, StyleSheet } from 'react-native';
 
 interface Props {
   size: number;
@@ -47,13 +47,13 @@ const RatingSymbol = ({
 
   const translateOverlay = animatedOverlay.interpolate({
     inputRange: [index - 1, index],
-    outputRange: [-size, 0],
+    outputRange: [I18nManager.isRTL ? size : -size, 0],
     extrapolate: 'clamp',
   });
 
   const translateSymbol = animatedOverlay.interpolate({
     inputRange: [index - 1, index],
-    outputRange: [size, 0],
+    outputRange: [I18nManager.isRTL ? -size : size, 0],
     extrapolate: 'clamp',
   });
 
