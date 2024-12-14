@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
+  I18nManager,
   ImageSourcePropType,
   PanResponder,
   StyleProp,
@@ -77,7 +78,9 @@ export const Rating = React.memo(
     }, [interactive, animatedSymbol, animatedOverlay, value]);
 
     const setAnimatedValues = (locationX: number) => {
-      const newValue = clamp(Math.ceil(locationX / width), 0, maxRating);
+      const newValue = I18nManager.isRTL
+        ? clamp(Math.ceil(maxRating - locationX / width), 0, maxRating)
+        : clamp(Math.ceil(locationX / width), 0, maxRating);
 
       if (newValue !== props.current.value) {
         props.current.value = newValue;
