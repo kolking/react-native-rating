@@ -2,10 +2,9 @@
 #import <XCTest/XCTest.h>
 
 #import <React/RCTLog.h>
-#import <React/RCTRootView.h>
 
 #define TIMEOUT_SECONDS 600
-#define TEXT_TO_LOOK_FOR @"Welcome to React"
+#define TEXT_TO_LOOK_FOR @"Rated 3.5 out of 5"
 
 @interface exampleTests : XCTestCase
 
@@ -28,7 +27,6 @@
 
 - (void)testRendersWelcomeScreen
 {
-  UIViewController *vc = [[[RCTSharedApplication() delegate] window] rootViewController];
   NSDate *date = [NSDate dateWithTimeIntervalSinceNow:TIMEOUT_SECONDS];
   BOOL foundElement = NO;
 
@@ -46,7 +44,15 @@
     [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
     [[NSRunLoop mainRunLoop] runMode:NSRunLoopCommonModes beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
 
-    foundElement = [self findSubviewInView:vc.view
+    UIWindow *window = nil;
+    for (UIScene *scene in [UIApplication sharedApplication].connectedScenes) {
+      if ([scene isKindOfClass:[UIWindowScene class]]) {
+        window = ((UIWindowScene *)scene).windows.firstObject;
+        break;
+      }
+    }
+
+    foundElement = [self findSubviewInView:window.rootViewController.view
                                   matching:^BOOL(UIView *view) {
                                     if ([view.accessibilityLabel isEqualToString:TEXT_TO_LOOK_FOR]) {
                                       return YES;
